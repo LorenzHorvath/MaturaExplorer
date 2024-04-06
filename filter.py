@@ -81,10 +81,12 @@ def print_help():
 
 def sort_descriptors(descriptor_ratios):
     global sorted_descriptors
-    sorted_descriptors = sorted([descriptor for descriptor in descriptor_ratios.keys() if descriptor.startswith(
-        ("B_T_", "B_T2", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))],
-                                key=lambda x: tuple(map(lambda y: int(y) if y.isdigit() else y, x.split('_'))),
-                                reverse=False)
+    sorted_descriptors = sorted(
+        [descriptor for descriptor in descriptor_ratios.keys() if descriptor.startswith(
+            ("B_T_", "B_T2", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"))],
+        key=lambda x: (descriptor_ratios[x],) + tuple(map(lambda y: int(y) if y.isdigit() else y, x.split('_'))),
+        reverse=False
+    )
 
 
 def main():
