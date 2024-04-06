@@ -72,8 +72,12 @@ def show_stats(descriptor_count, descriptor_ratios):
 
 def print_help():
     print("Type 'get' to get a question of the descriptor sorted on top.")
-    print("Type 'done' followed by the id of the question to declare a question as done.")
-    print("Type 'mark' followed by the id of the question to mark a question.")
+    print(
+        "Type 'done' followed by the id of the question to declare a question as done. "
+        "If no ID is provided, the last fetched question will be saved.")
+    print(
+        "Type 'mark' followed by the id of the question to mark a question. "
+        "If no ID is provided, the last fetched question will be saved.")
     print("Type 'stats' to get the stats.")
     print("Type 'help' to get a list of commands.")
     print("Type 'quit' to quit and save your changes.")
@@ -153,7 +157,6 @@ def main():
 
 
 global sorted_descriptors
-
 
 if __name__ == "__main__":
     main()
