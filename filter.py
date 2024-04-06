@@ -80,16 +80,14 @@ def show_stats(descriptor_count, descriptor_ratios):
 
 
 def print_help():
-    print("Type 'get' to get a question of the descriptor sorted on top.")
-    print(
-        "Type 'done' followed by the id of the question to declare a question as done. "
-        "If no ID is provided, the last fetched question will be saved.")
-    print(
-        "Type 'mark' followed by the id of the question to mark a question. "
-        "If no ID is provided, the last fetched question will be saved.")
-    print("Type 'stats' to get the stats.")
-    print("Type 'help' to get a list of commands.")
-    print("Type 'quit' to quit and save your changes.")
+    print("\nCommand         Description\n"
+          "-------------------------------------------------------------------------------------------------------\n"
+          "get             Get a question of the descriptor sorted on top.\n"
+          "done [ID]       Declare a question as done. If no ID provided, the last fetched question will be saved.\n"
+          "mark [ID]       Mark a question. If no ID provided, the last fetched question will be saved.\n"
+          "stats           Get statistics.\n"
+          "help            Display list of commands.\n"
+          "quit            Quit and save your changes.\n")
 
 
 def sort_descriptors(descriptor_ratios):
@@ -119,8 +117,8 @@ def main():
 
     print_help()
 
-    print("To filter by certain descriptors use the 'relevant_descriptors.json' file.")
-    print("Make sure to quit via 'quit' to save your changes.")
+    print("To filter by specific descriptors, use the 'relevant_descriptors.json' file.")
+    print("Make sure to exit using the 'quit' command to save your changes.")
 
     while True:
         user_input = input()
