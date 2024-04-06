@@ -63,11 +63,20 @@ def show_stats(descriptor_count, descriptor_ratios):
         print("No relevant descriptors found.")
         return
 
+    total_questions = sum(descriptor_count.values())
+    total_done = sum(descriptor_count[descriptor] * ratio for descriptor, ratio in descriptor_ratios.items())
+    total_ratio_done = total_done / total_questions if total_questions else 0
+
+    print(f"Total Questions: {total_questions}")
+    print(f"Percent of questions done: {total_ratio_done * 100:.2f}%\n")
+
+    print(f"Descriptor".ljust(10), "Total".rjust(9), "Percent Done".rjust(15))
+    print("-" * 36)
+
     for descriptor in sorted_descriptors:
-        total_questions = descriptor_count.get(descriptor, 0)
-        print(f"Descriptor {descriptor}: "
-              f"Ratio of questions done: {descriptor_ratios[descriptor]},"
-              f" Total questions: {total_questions}")
+        total_descriptor = descriptor_count.get(descriptor, 0)
+        ratio = descriptor_ratios.get(descriptor, 0)
+        print(f"{descriptor.ljust(10)}{str(total_descriptor).rjust(10)}", f"{ratio * 100:.2f}%".rjust(15))
 
 
 def print_help():
